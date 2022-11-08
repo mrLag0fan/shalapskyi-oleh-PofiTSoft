@@ -1,6 +1,9 @@
 package org.example.task1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Task1 {
 
@@ -15,6 +18,7 @@ public class Task1 {
                     result.add(i);
                 }
             }
+            Collections.reverse(result);
             return result.stream().mapToInt((i) -> i).toArray();
         }
         throw new IllegalArgumentException("Array is null!");

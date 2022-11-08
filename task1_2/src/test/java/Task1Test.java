@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import org.example.task1.Task1;
 import org.junit.jupiter.api.Assertions;
@@ -27,8 +28,9 @@ public class Task1Test {
         for (int i = 0; i < ARRAY_SIZE; i++) {
             input[i] = i;
         }
+        int[] expected = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
         int[] res = Task1.filter(input);
-        Assertions.assertArrayEquals(input, res);
+        Assertions.assertArrayEquals(expected, res);
     }
 
     @Test
@@ -52,7 +54,7 @@ public class Task1Test {
                 input[i] = -(ARRAY_SIZE + i);
             }
         }
-        int[] expected = {10, 12, 14, 16, 18};
+        int[] expected = {18, 16, 14, 12, 10};
         int[] res = Task1.filter(input);
         Assertions.assertArrayEquals(expected, res);
     }
@@ -69,6 +71,7 @@ public class Task1Test {
             }
         }
         int[] res = Task1.filter(input);
+        Collections.reverse(expected);
         Assertions.assertArrayEquals(expected.stream().mapToInt((i) -> i).toArray(), res);
     }
 }

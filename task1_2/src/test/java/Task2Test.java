@@ -23,26 +23,36 @@ public class Task2Test {
     @Test
     public void testNoRepeats() {
         HashMap<String, Integer> res = Task2.countHashtags(
-            List.of("#aaa#bbb#ccc#ddd", "#aaa#bbb#ccc#ddd", "##aaa#bbb#ccc#ddd"));
+            List.of("#aaa#bbb#ccc#ddd#fff#eee", "#aaa#bbb#ccc#ddd#eee#fff", "#aaa#bbb#ccc#ddd#eee#fff"));
         HashMap<String, Integer> expected = new HashMap<>();
         expected.put("aaa", 3);
         expected.put("bbb", 3);
         expected.put("ccc", 3);
         expected.put("ddd", 3);
+        expected.put("eee", 3);
         Assertions.assertEquals(expected, res);
-        Assertions.assertEquals(4, res.size());
+        Assertions.assertEquals(5, res.size());
     }
 
     @Test
     public void testWithRepeats() {
         HashMap<String, Integer> res = Task2.countHashtags(
-            List.of("#aaa#aaa#bbb#ccc#ddd", "#aaa#bbb#ccc#bbb#ddd", "#ccc#aaa#bbb#ccc#ddd"));
+            List.of("#aaa#aaa#bbb#ccc#ddd#fff#eee",
+                "#aaa#bbb#ccc#bbb#ddd#eee#eee",
+                "#aaa#ddd#bbb#ccc#ddd",
+                "#aaa#ccc#bbb#ccc",
+                "#aaa#bbb#bbb",
+                "#aaa",
+                "#ggg",
+                "#hhh"
+            ));
         HashMap<String, Integer> expected = new HashMap<>();
-        expected.put("aaa", 3);
-        expected.put("bbb", 3);
-        expected.put("ccc", 3);
+        expected.put("aaa", 6);
+        expected.put("bbb", 5);
+        expected.put("ccc", 4);
         expected.put("ddd", 3);
+        expected.put("eee", 2);
         Assertions.assertEquals(expected, res);
-        Assertions.assertEquals(4, res.size());
+        Assertions.assertEquals(5, res.size());
     }
 }
